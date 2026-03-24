@@ -2273,7 +2273,7 @@ class SearchService:
                     'query': f"{stock_name} analyst rating target price report",
                     'desc': '机构分析',
                     'tavily_topic': None,
-                    'strict_freshness': False,
+                    'strict_freshness': True,
                 },
                 {
                     'name': 'risk_check',
@@ -2293,7 +2293,7 @@ class SearchService:
                     ),
                     'desc': '业绩预期',
                     'tavily_topic': None,
-                    'strict_freshness': False,
+                    'strict_freshness': True,
                 },
                 {
                     'name': 'industry',
