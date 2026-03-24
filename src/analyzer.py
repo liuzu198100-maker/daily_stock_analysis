@@ -1509,7 +1509,9 @@ class GeminiAnalyzer:
         try:
             report_language = normalize_report_language(getattr(get_config(), "report_language", "zh"))
             # 清理响应文本：移除 markdown 代码块标记
-            cleaned_text = response_text
+            import re
+            cleaned_text = re.sub(r"<think>.*?</think>", "", response_text, flags=re.DOTALL)
+            cleaned_text = cleaned_text.strip()
             if '```json' in cleaned_text:
                 cleaned_text = cleaned_text.replace('```json', '').replace('```', '')
             elif '```' in cleaned_text:
