@@ -1311,9 +1311,13 @@ class GeminiAnalyzer:
 - **具体狙击点位**：买入价、止损价、目标价（精确到分）
 - **检查清单**：每项用 ✅/⚠️/❌ 标记
 - **消息面时间合规**：`latest_news`、`risk_alerts`、`positive_catalysts` 不得包含超出近{news_window_days}日或时间未知的信息
+- **严禁补写新闻日期**：如果原始新闻结果里没有明确发布日期，不得自行推断、不得补写、不得伪造日期
+- **严禁使用窗口外旧研报/旧文章**：即使内容相关，只要日期不在近{news_window_days}日内，就不能写入 `latest_news`、`risk_alerts`、`positive_catalysts`
+- **如果近{news_window_days}日内没有合规新闻**：请明确写“无可用近{news_window_days}日合规新闻”
+- **禁止把机构研报观点当作最新新闻**，除非该研报本身有明确发布日期且在近{news_window_days}日内
 
 请输出完整的 JSON 格式决策仪表盘。"""
-
+        
         if report_language == "en":
             prompt += """
 
